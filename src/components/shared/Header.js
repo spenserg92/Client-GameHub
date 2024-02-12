@@ -3,17 +3,17 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
-    color: 'white',
-    textDecoration: 'none'
+	color: 'white',
+	textDecoration: 'none'
 }
 const authenticatedOptions = (
 	<>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
 		</Nav.Item>
-		<Nav.Item>
+		<Nav.Item className='m-2'>
 			<Link to='sign-out' style={linkStyle}>
 				Sign Out
 			</Link>
@@ -23,32 +23,32 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
 	<>
-        <Nav.Item>
-		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
-        </Nav.Item>
-        <Nav.Item>
-		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
-        </Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+		</Nav.Item>
+		<Nav.Item className='m-2'>
+			<Link to='sign-in' style={linkStyle}>Sign In</Link>
+		</Nav.Item>
 	</>
 )
 
 const alwaysOptions = (
 	<>
-		<Nav.Link>
+		<Nav.Item className='m-2'>
 			<Link to='/' style={linkStyle}>
 				Home
 			</Link>
-		</Nav.Link>
+		</Nav.Item>
 	</>
 )
 
 const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
-		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
-                react-auth-template
-            </Link>
-        </Navbar.Brand>
+		<Navbar.Brand className='m-2'>
+			<Link to='/' style={linkStyle}>
+				GameHub
+			</Link>
+		</Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />
 		<Navbar.Collapse id='basic-navbar-nav'>
 			<Nav className='ml-auto'>
