@@ -2,7 +2,7 @@ import PlatformsIndex from "./Platforms/PlatformsIndex"
 
 const Home = (props) => {
 	const { msgAlert } = props
-	console.log('props in home', props)
+	// console.log('props in home', props)
 
 	return (
 		<>

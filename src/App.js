@@ -1,5 +1,5 @@
 // import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
@@ -12,12 +12,25 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import PlatformShow from './components/Platforms/PlatformShow'
 
 
 const App = () => {
 
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
+
+	useEffect(() => {
+			// access localStorage
+			const loggedInUser = localStorage.getItem('user')
+
+			if (loggedInUser) {
+				// we need to parse the json string
+				const foundUser = JSON.parse(loggedInUser)
+				// then set that saved user in state
+				setUser(foundUser)
+			}
+		}, [])
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -68,6 +81,12 @@ const App = () => {
 						<RequireAuth user={user}>
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
+				/>
+				<Route
+					path='Platforms/:platformId'
+					element={
+						<PlatformShow user={user} msgAlert={msgAlert} />
+					}
 				/>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
