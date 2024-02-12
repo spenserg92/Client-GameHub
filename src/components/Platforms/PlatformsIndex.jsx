@@ -44,7 +44,7 @@ const PlatformsIndex = (props) => {
             <Card.Header></Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/Platforms/${platform.id}`} className='btn btn-info'>
+                    <Link to={`/Platforms/${platform._id}`} className='btn btn-info'>
                         View {platform.name}
                     </Link>
                 </Card.Text>
