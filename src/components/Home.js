@@ -1,4 +1,4 @@
-import PlatformsIndex from "./Platforms/PlatformsIndex"
+import PlatformsIndex from "./platforms/PlatformsIndex"
 
 const Home = (props) => {
 	const { msgAlert } = props
@@ -6,7 +6,7 @@ const Home = (props) => {
 
 	return (
 		<>
-			<h2>Home Page</h2>
+			<h2>PlatForms</h2>
 			<PlatformsIndex msgAlert={msgAlert} />
 		</>
 	)

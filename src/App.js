@@ -12,7 +12,7 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import PlatformShow from './components/Platforms/PlatformShow'
+import PlatformShow from './components/platforms/PlatformShow'
 
 
 const App = () => {
@@ -83,7 +83,7 @@ const App = () => {
 						</RequireAuth>}
 				/>
 				<Route
-					path='Platforms/:platformId'
+					path='platforms/:platformId'
 					element={
 						<PlatformShow user={user} msgAlert={msgAlert} />
 					}
