@@ -11,17 +11,17 @@ export const getOneGame = (id) => {
     return axios(`${apiUrl}/games/${id}`)
 }
 
-// // CREATE -> Platform
-// export const createPlatform = (user, newPlatform) => {
-//     return axios({
-//         url: `${apiUrl}/platforms`,
-//         method: 'POST',
-//         headers: {
-//             Authorization: `Token token=${user.token}`
-//         },
-//         data: { platform: newPlatform }
-//     })
-// }
+// CREATE -> Game
+export const createGame = (user, newGame) => {
+    return axios({
+        url: `${apiUrl}/games`,
+        method: 'POST',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { game: newGame }
+    })
+}
 
 // // UPDATE -> Adjust a platform
 // export const updatePlatform = (user, updatedPlatform) => {

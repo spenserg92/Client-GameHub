@@ -10,6 +10,9 @@ const messages = {
 	createPlatformSuccess: 'You created a platform',
 	updatePlatformSuccess: 'You updated the platform',
 	deletePlatformSuccess: 'You deleted the platform',
+	createGameSuccess: 'You created a game',
+	updateGameSuccess: 'You updated the game',
+	deleteGameSuccess: 'You deleted the game',
 }
 
 module.exports = messages

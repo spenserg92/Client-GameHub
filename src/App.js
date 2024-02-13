@@ -16,6 +16,7 @@ import PlatformShow from './components/platforms/PlatformShow'
 import CreatePlatform from './components/platforms/PlatformCreate'
 import GamesIndex from './components/games/GamesIndex'
 import GameShow from './components/games/GameShow'
+import CreateGame from './components/games/GameCreate'
 
 
 const App = () => {
@@ -114,6 +115,14 @@ const App = () => {
 						<GameShow user={user} msgAlert={msgAlert} />
 					}
 				/>
+				<Route
+					path='/create-game'
+					element={
+						<RequireAuth user={user}>
+							<CreateGame msgAlert={msgAlert} user={user} />
+						</RequireAuth>
+					}
+				></Route>
 			</Routes>
 			{msgAlerts.map((msgAlert) => (
 				<AutoDismissAlert
