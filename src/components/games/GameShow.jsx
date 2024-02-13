@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getOneGame, removeGame } from '../../api/game'
+import { getOneGame, removeGame, updateGame } from '../../api/game'
 import { Container, Button, Card } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import LoadingScreen from '../shared/LoadingScreen'
+import EditGameModal from './EditGameModal'
 
 const GameShow = (props) => {
     const { gameId } = useParams()
     const { user, msgAlert } = props
 
     const [game, setGame] = useState(null)
-    // const [editModalShow, setEditModalShow] = useState(false)
+    const [editModalShow, setEditModalShow] = useState(false)
 
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
@@ -26,7 +27,7 @@ const GameShow = (props) => {
                     variant: 'danger'
                 })
             })
-    }, [])
+    }, [updated])
 
     const deleteGame = () => {
         // we want to remove the pet
@@ -80,13 +81,13 @@ const GameShow = (props) => {
                             game.owner && user && game.owner._id === user._id
                             ?
                             <>
-                                {/* <Button
+                                <Button
                                     className='m-2'
                                     variant='warning'
                                     onClick={() => setEditModalShow(true)}
                                 >
-                                    Edit platform
-                                </Button> */}
+                                    Edit Game
+                                </Button>
                                 <Button
                                     className='m-2'
                                     variant='danger'
@@ -105,15 +106,15 @@ const GameShow = (props) => {
                     </Card.Footer>
                 </Card>
             </Container>
-            {/* <EditPlatformModal 
+            <EditGameModal 
                 user={user}
                 show={editModalShow}
-                updatePlatform={updatePlatform}
+                updateGame={updateGame}
                 msgAlert={msgAlert}
                 handleClose={() => setEditModalShow(false)}
-                platform={platform}
+                game={game}
                 triggerRefresh={() => setUpdated(prev => !prev)}
-            /> */}
+            />
         </>
     )
 

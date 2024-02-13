@@ -23,17 +23,17 @@ export const createGame = (user, newGame) => {
     })
 }
 
-// // UPDATE -> Adjust a platform
-// export const updatePlatform = (user, updatedPlatform) => {
-//     return axios({
-//         url: `${apiUrl}/platforms/${updatedPlatform._id}`,
-//         method: 'PATCH',
-//         headers: {
-//             Authorization: `Token token=${user.token}`
-//         },
-//         data: { platform: updatedPlatform }
-//     })
-// }
+// UPDATE -> Adjust a game
+export const updateGame = (user, updatedGame) => {
+    return axios({
+        url: `${apiUrl}/games/${updatedGame._id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { game: updatedGame }
+    })
+}
 
 // DELETE -> Delete game
 export const removeGame = (user, id) => {
