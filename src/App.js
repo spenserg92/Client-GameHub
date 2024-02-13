@@ -14,6 +14,7 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import PlatformShow from './components/platforms/PlatformShow'
 import CreatePlatform from './components/platforms/PlatformCreate'
+import GamesIndex from './components/games/GamesIndex'
 
 
 const App = () => {
@@ -98,6 +99,12 @@ const App = () => {
 					path='platforms/:platformId'
 					element={
 						<PlatformShow user={user} msgAlert={msgAlert} />
+					}
+				/>
+				<Route 
+					path='/games'
+					element={
+						<GamesIndex user={user} msgAlert={msgAlert}/>
 					}
 				/>
 			</Routes>
