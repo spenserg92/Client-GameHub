@@ -6,7 +6,10 @@ const messages = {
 	signOutSuccess: 'Come back soon!',
 	changePasswordSuccess: 'Password changed successfully!',
 	changePasswordFailure:'Failed to change passwords. Check your old password and try again.',
-	generalError: 'Something went wrong... Try Again'
+	generalError: 'Something went wrong... Try Again',
+	createPlatformSuccess: 'You created a platform',
+	updatePlatformSuccess: 'You updated the platform',
+	deletePlatformSuccess: 'You deleted the platform',
 }
 
 module.exports = messages

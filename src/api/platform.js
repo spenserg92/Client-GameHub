@@ -22,3 +22,26 @@ export const createPlatform = (user, newPlatform) => {
         data: { platform: newPlatform }
     })
 }
+
+// UPDATE -> Adjust a platform
+export const updatePlatform = (user, updatedPlatform) => {
+    return axios({
+        url: `${apiUrl}/platforms/${updatedPlatform._id}`,
+        method: 'PATCH',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        },
+        data: { platform: updatedPlatform }
+    })
+}
+
+// DELETE -> Delete platform
+export const removePlatform = (user, id) => {
+    return axios({
+        url: `${apiUrl}/platforms/${id}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}

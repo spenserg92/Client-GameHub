@@ -1,20 +1,11 @@
-import { useState } from "react";
-import messages from "../shared/AutoDismissAlert/messages";
-import PlatformForm from "../shared/PlatformForm";
-import { useNavigate } from 'react-router-dom'
-import { createPlatform } from "../../api/platform";
+import React, { useState } from 'react'
+import { Modal } from 'react-bootstrap'
+import PlatformForm from '../shared/PlatformForm'
+import messages from '../shared/AutoDismissAlert/messages'
 
-const CreatePlatform = (props) => {
-
-    const { user, msgAlert } = props
-    const navigate = useNavigate()
-    const [platform, setPlatform] = useState({
-        name: "",
-        releaseYear: '',
-        manufacturer: '',
-        price: '',
-
-    })
+const EditPlatformModal = (props) => {
+    const { user, show, handleClose, updatePlatform, msgAlert, triggerRefresh } = props
+    const [platform, setPlatform] = useState(props.platform)
 
     const onChange = (e) => {
         e.persist()
@@ -32,9 +23,7 @@ const CreatePlatform = (props) => {
             // } else if (updatedName === 'adoptable' && !e.target.checked) {
             //     updatedValue = false
             // }
-
             const updatedPlatform = { [updatedName] : updatedValue }
-
             return {
                 ...prevPlatform, ...updatedPlatform
             }
@@ -43,17 +32,17 @@ const CreatePlatform = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-
-        createPlatform(user, platform)
-            .then(res => { navigate(`/platforms/${res.data.platform._id}`)})
+        updatePlatform(user, platform)
+            .then(() => handleClose())
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
-                    message: messages.createPlatformSuccess,
+                    message: messages.updatePlatformSuccess,
                     variant: 'success'
                 })
             })
-            .catch(err => {
+            .then(() => triggerRefresh())
+            .catch(() => {
                 msgAlert({
                     heading: 'Oh no!',
                     message: messages.generalError,
@@ -63,18 +52,18 @@ const CreatePlatform = (props) => {
     }
 
     return (
-        
-        <PlatformForm
-            platform={platform}
-            handleChange={onChange}
-            handleSubmit={onSubmit}
-            heading="Add a new platform!"
-        
-        >
-        </PlatformForm>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton />
+            <Modal.Body>
+                <PlatformForm 
+                    platform={platform}
+                    handleChange={onChange}
+                    handleSubmit={onSubmit}
+                    heading="Update Platform"
+                />
+            </Modal.Body>
+        </Modal>
     )
-
-
 }
 
-export default CreatePlatform
+export default EditPlatformModal

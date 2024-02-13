@@ -89,13 +89,10 @@ const App = () => {
 					path='/create-platform'
 					element={
 						<RequireAuth user={user}>
-							<CreatePlatform msgAlert={msgAlert} user={user}>
-
-							</CreatePlatform>
+							<CreatePlatform msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
 				>
-
 				</Route>
 				<Route
 					path='platforms/:platformId'

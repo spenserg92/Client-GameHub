@@ -31,7 +31,7 @@ const PlatformForm = (props) => {
                     <Form.Label>Release Year: </Form.Label>
                     <Form.Control 
                         type="number"
-                        placeholder="How old is your pet?"
+                        placeholder="Year of Release?"
                         id="releaseYear"
                         name="releaseYear"
                         value={ platform.releaseYear }
@@ -39,7 +39,8 @@ const PlatformForm = (props) => {
                     />
                 </Form.Group>
                 <Form.Group className='m-2'>
-                    <Form.Check 
+                <Form.Label>MSRP: </Form.Label>
+                    <Form.Control
                         type="number"
                         placeholder="What is the MSRP of this platform?"
                         id="price"
