@@ -41,7 +41,9 @@ const PlatformsIndex = (props) => {
 
     const platformCards = platforms.map(platform => (
         <Card key={platform.id} style={{width: "30%", margin: 5}} >
-            <Card.Header></Card.Header>
+            <Card.Header>
+                {platform.name}
+            </Card.Header>
             <Card.Body>
                 <Card.Text>
                     <Link to={`/platforms/${platform._id}`} className='btn btn-info'>

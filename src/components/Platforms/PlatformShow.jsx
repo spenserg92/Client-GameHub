@@ -115,7 +115,7 @@ const PlatformShow = (props) => {
             <EditPlatformModal 
                 user={user}
                 show={editModalShow}
-                updatePet={updatePlatform}
+                updatePlatform={updatePlatform}
                 msgAlert={msgAlert}
                 handleClose={() => setEditModalShow(false)}
                 platform={platform}
