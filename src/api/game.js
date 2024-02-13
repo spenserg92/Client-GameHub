@@ -6,10 +6,10 @@ export const getAllGames = () => {
     return axios(`${apiUrl}/games`)
 }
 
-// // READ -> Show
-// export const getOnePlatform = (id) => {
-//     return axios(`${apiUrl}/platforms/${id}`)
-// }
+// READ -> Show
+export const getOneGame = (id) => {
+    return axios(`${apiUrl}/games/${id}`)
+}
 
 // // CREATE -> Platform
 // export const createPlatform = (user, newPlatform) => {

@@ -15,6 +15,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import PlatformShow from './components/platforms/PlatformShow'
 import CreatePlatform from './components/platforms/PlatformCreate'
 import GamesIndex from './components/games/GamesIndex'
+import GameShow from './components/games/GameShow'
 
 
 const App = () => {
@@ -105,6 +106,12 @@ const App = () => {
 					path='/games'
 					element={
 						<GamesIndex user={user} msgAlert={msgAlert}/>
+					}
+				/>
+				<Route
+					path='games/:gameId'
+					element={
+						<GameShow user={user} msgAlert={msgAlert} />
 					}
 				/>
 			</Routes>
