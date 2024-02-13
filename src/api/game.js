@@ -35,13 +35,13 @@ export const createGame = (user, newGame) => {
 //     })
 // }
 
-// // DELETE -> Delete platform
-// export const removePlatform = (user, id) => {
-//     return axios({
-//         url: `${apiUrl}/platforms/${id}`,
-//         method: 'DELETE',
-//         headers: {
-//             Authorization: `Token token=${user.token}`
-//         }
-//     })
-// }
+// DELETE -> Delete game
+export const removeGame = (user, id) => {
+    return axios({
+        url: `${apiUrl}/games/${id}`,
+        method: 'DELETE',
+        headers: {
+            Authorization: `Token token=${user.token}`
+        }
+    })
+}
