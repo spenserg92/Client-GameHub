@@ -13,6 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import PlatformShow from './components/platforms/PlatformShow'
+import CreatePlatform from './components/platforms/PlatformCreate'
 
 
 const App = () => {
@@ -34,8 +35,10 @@ const App = () => {
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
+
 	const clearUser = () => {
 		console.log('clear user ran')
+		localStorage.removeItem('user')
 		setUser(null)
 	}
 
@@ -82,6 +85,18 @@ const App = () => {
 							<ChangePassword msgAlert={msgAlert} user={user} />
 						</RequireAuth>}
 				/>
+				<Route
+					path='/create-platform'
+					element={
+						<RequireAuth user={user}>
+							<CreatePlatform msgAlert={msgAlert} user={user}>
+
+							</CreatePlatform>
+						</RequireAuth>
+					}
+				>
+
+				</Route>
 				<Route
 					path='platforms/:platformId'
 					element={

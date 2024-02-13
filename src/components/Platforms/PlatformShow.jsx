@@ -53,59 +53,6 @@ const PlatformShow = (props) => {
         </>
     )
 
-
-
-
-
-
-    //     const [updated, setUpdated] = useState(false)
-
-    //     const navigate = useNavigate()
-
-    //    
-
-
-
-    //     return (
-    //         <>
-    //             <Container className='m-2'>
-    //                 <Card>
-    //                     <Card.Header>
-    //                         {platform.name}
-    //                     </Card.Header>
-    //                     <Card.Body>
-    //                         <Card.Text>
-    //                             <small>Release Year: {platform.releaseYear}</small>
-    //                             <small>Manufacturer: {platform.manufacturer}</small>
-    //                             <small>MSRP: {platform.price}</small>
-    //                         </Card.Text>
-    //                     </Card.Body>
-    //                     <Card.Footer>
-    //                         {
-    //                             platform.owner && user && platform.owner._id === user._id
-    //                             ?
-    //                             <>
-    //                                 <Button>
-    //                                     Edit Pet
-    //                                 </Button>
-    //                                 <Button>
-    //                                     Set Pet Free
-    //                                 </Button>
-    //                             </>
-    //                             :
-    //                             null
-    //                         }
-    //                         <br/>
-    //                         {
-    //                             platform.owner ? `owner: ${platform.owner.email}` : null
-    //                         }
-    //                     </Card.Footer>
-    //                 </Card>
-    //             </Container>
-
-    //         </>
-    //     )
-
 }
 
 export default PlatformShow
