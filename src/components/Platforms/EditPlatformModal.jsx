@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal } from 'react-bootstrap'
 import PlatformForm from '../shared/PlatformForm'
 import messages from '../shared/AutoDismissAlert/messages'
 
+
 const EditPlatformModal = (props) => {
     const { user, show, handleClose, updatePlatform, msgAlert, triggerRefresh } = props
     const [platform, setPlatform] = useState(props.platform)
+    console.log('the platform in the modal', platform)
+
+    useEffect(() => {
+        setPlatform(props.platform)
+    }, []) 
 
     const onChange = (e) => {
         e.persist()

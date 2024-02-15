@@ -25,7 +25,7 @@ const PlatformShow = (props) => {
 
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
-
+    console.log('the platform in the show page', platform)
     useEffect(() => {
         getOnePlatform(platformId)
             .then(res => setPlatform(res.data.platform))
@@ -38,10 +38,13 @@ const PlatformShow = (props) => {
             })
     }, [updated])
 
+    const closeModal = () => {
+        setEditModalShow(false)
+        setUpdated(prev => !prev)
+    }
+
     const deletePlatform = () => {
-        // we want to remove the pet
         removePlatform(user, platform._id)
-            // display a success message
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
@@ -49,9 +52,7 @@ const PlatformShow = (props) => {
                     variant: 'success'
                 })
             })
-            // navigate the user back to the index page(Home)(/)
             .then(() => navigate('/'))
-            // if an error occurs, tell the user
             .catch(err => {
                 msgAlert({
                     heading: 'Oh no!',
@@ -86,16 +87,19 @@ const PlatformShow = (props) => {
     return (
         <>
             <Container>
-                <Card className='m-2'>
+                <Card key={platform.id} className='m-2'>
+                    
                     <Card.Header>
                         {platform.name}
                     </Card.Header>
                     <Card.Body>
+                    
                         <Card.Text>
                             <small>Release Year: {platform.releaseYear}</small><br />
                             <small>Manufacturer: {platform.manufacturer}</small><br />
                             <small>MSRP: {platform.price}</small>
                         </Card.Text>
+                        
                     </Card.Body>
                     <Card.Footer>
                         <Button
@@ -140,10 +144,10 @@ const PlatformShow = (props) => {
             <EditPlatformModal 
                 user={user}
                 show={editModalShow}
+                platform={platform}
                 updatePlatform={updatePlatform}
                 msgAlert={msgAlert}
-                handleClose={() => setEditModalShow(false)}
-                platform={platform}
+                handleClose={closeModal}
                 triggerRefresh={() => setUpdated(prev => !prev)}
             />
             <NewGameModal 
