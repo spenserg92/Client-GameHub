@@ -9,20 +9,12 @@ const EditPlatformModal = (props) => {
 
     const onChange = (e) => {
         e.persist()
-
         setPlatform(prevPlatform => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
-
             if (e.target.type === 'number') {
                 updatedValue = parseInt(e.target.value)
             }
-
-            // if (updatedName === 'adoptable' && e.target.checked) {
-            //     updatedValue = true
-            // } else if (updatedName === 'adoptable' && !e.target.checked) {
-            //     updatedValue = false
-            // }
             const updatedPlatform = { [updatedName] : updatedValue }
             return {
                 ...prevPlatform, ...updatedPlatform

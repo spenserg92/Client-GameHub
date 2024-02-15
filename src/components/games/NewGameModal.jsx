@@ -1,35 +1,23 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Modal } from 'react-bootstrap'
 import messages from "../shared/AutoDismissAlert/messages";
 import GameForm from "../shared/GameForm";
-import { useNavigate } from 'react-router-dom'
 import { createGame } from "../../api/game";
 
-const CreateGame = (props) => {
+const NewGameModal = (props) => {
 
-    const { user, msgAlert } = props
-    const navigate = useNavigate()
-    const [game, setGame] = useState({
-        name: '',
-        releaseYear: '',
-        developer: '',
-        price: '',
-
-    })
+    const { platform, show, handleClose, msgAlert, triggerRefresh } = props
+    const [game, setGame] = useState({})
 
     const onChange = (e) => {
         e.persist()
-
         setGame(prevGame => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
-
             if (e.target.type === 'number') {
                 updatedValue = parseInt(e.target.value)
             }
-
-
             const updatedGame = { [updatedName] : updatedValue }
-
             return {
                 ...prevGame, ...updatedGame
             }
@@ -38,9 +26,8 @@ const CreateGame = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-
-        createGame(user, game)
-            .then(res => { navigate(`/games/${res.data.game._id}`)})
+        createGame(platform, game)
+            .then(() => handleClose())
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
@@ -48,6 +35,8 @@ const CreateGame = (props) => {
                     variant: 'success'
                 })
             })
+            .then(() => triggerRefresh())
+            .then(() => setGame({}))
             .catch(err => {
                 msgAlert({
                     heading: 'Oh no!',
@@ -59,17 +48,20 @@ const CreateGame = (props) => {
 
     return (
         
-        <GameForm
-            game={game}
-            handleChange={onChange}
-            handleSubmit={onSubmit}
-            heading="Add a new game!"
-        
-        >
-        </GameForm>
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton />
+            <Modal.Body>
+                <GameForm 
+                    game={game}
+                    handleChange={onChange}
+                    handleSubmit={onSubmit}
+                    heading={`Give ${platform.name} a game!`}
+                />
+            </Modal.Body>
+        </Modal>
     )
 
 
 }
 
-export default CreateGame
+export default NewGameModal

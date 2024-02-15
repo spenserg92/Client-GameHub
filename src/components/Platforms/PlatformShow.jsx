@@ -6,8 +6,14 @@ import { Container, Card, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 import EditPlatformModal from './EditPlatformModal'
+import GameShow from '../games/GameShow'
+import NewGameModal from '../games/NewGameModal'
 
-
+const gameCardContainerLayout = {
+    display: 'flex',
+    justifyContent: 'center',
+    flexFlow: 'row wrap'
+}
 
 const PlatformShow = (props) => {
     const { platformId } = useParams()
@@ -15,6 +21,7 @@ const PlatformShow = (props) => {
 
     const [platform, setPlatform] = useState(null)
     const [editModalShow, setEditModalShow] = useState(false)
+    const [gameModalShow, setGameModalShow] = useState(false)
 
     const [updated, setUpdated] = useState(false)
     const navigate = useNavigate()
@@ -54,6 +61,24 @@ const PlatformShow = (props) => {
             })
     }
 
+    let gameCards
+    if (platform) {
+        if (platform.games.length > 0) {
+            gameCards = platform.games.map(game => (
+                <GameShow 
+                    key={game.id}
+                    game={game}
+                    platform={platform}
+                    user={user}
+                    msgAlert={msgAlert}
+                    triggerRefresh={() => setUpdated(prev => !prev)}
+                />
+            ))
+        } else {
+            gameCards = <p>Platform has no games currently, Go add one!</p>
+        }
+    }
+
     if (!platform) {
         return <LoadingScreen />
     }
@@ -61,7 +86,7 @@ const PlatformShow = (props) => {
     return (
         <>
             <Container>
-                <Card>
+                <Card className='m-2'>
                     <Card.Header>
                         {platform.name}
                     </Card.Header>
@@ -71,18 +96,15 @@ const PlatformShow = (props) => {
                             <small>Manufacturer: {platform.manufacturer}</small><br />
                             <small>MSRP: {platform.price}</small>
                         </Card.Text>
-                        <Card.Text>
-                            <small>Games: {platform.games}</small>
-                        </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        {/* <Button
+                        <Button
                             className='m-2'
                             variant='info'
-                            onClick={() => setToyModalShow(true)}
+                            onClick={() => setGameModalShow(true)}
                         >
-                            Give {pet.name} a toy!
-                        </Button> */}
+                            Give {platform.name} a game!
+                        </Button>
                         {
                             platform.owner && user && platform.owner._id === user._id
                             ?
@@ -92,14 +114,14 @@ const PlatformShow = (props) => {
                                     variant='warning'
                                     onClick={() => setEditModalShow(true)}
                                 >
-                                    Edit platform
+                                    Edit Platform
                                 </Button>
                                 <Button
                                     className='m-2'
                                     variant='danger'
                                     onClick={() => deletePlatform()}
                                 >
-                                    Set Pet Free
+                                    Delete Platform
                                 </Button>
                             </>
                             :
@@ -112,6 +134,9 @@ const PlatformShow = (props) => {
                     </Card.Footer>
                 </Card>
             </Container>
+            <Container className='m-2' style={gameCardContainerLayout}>
+                {gameCards}
+            </Container>
             <EditPlatformModal 
                 user={user}
                 show={editModalShow}
@@ -119,6 +144,13 @@ const PlatformShow = (props) => {
                 msgAlert={msgAlert}
                 handleClose={() => setEditModalShow(false)}
                 platform={platform}
+                triggerRefresh={() => setUpdated(prev => !prev)}
+            />
+            <NewGameModal 
+                platform={platform}
+                show={gameModalShow}
+                msgAlert={msgAlert}
+                handleClose={() => setGameModalShow(false)}
                 triggerRefresh={() => setUpdated(prev => !prev)}
             />
         </>

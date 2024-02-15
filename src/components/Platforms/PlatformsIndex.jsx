@@ -6,6 +6,13 @@ import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import messages from '../shared/AutoDismissAlert/messages'
 
+
+const cardContainerLayout = {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'center',
+}
+
 const PlatformsIndex = (props) => {
     const [platforms, setPlatforms] = useState(null)
     const [error, setError] = useState(false)
@@ -60,7 +67,7 @@ const PlatformsIndex = (props) => {
     ))
 
     return (
-        <div className="container-md" >
+        <div className="container-md" style={cardContainerLayout} >
             { platformCards }
         </div>
     )

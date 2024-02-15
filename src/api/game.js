@@ -1,47 +1,29 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-// READ -> Index
-export const getAllGames = () => {
-    return axios(`${apiUrl}/games`)
-}
 
-// READ -> Show
-export const getOneGame = (id) => {
-    return axios(`${apiUrl}/games/${id}`)
-}
-
-// CREATE -> Game
-export const createGame = (user, newGame) => {
+// CREATE -> games/:platformID
+export const createGame = (platform, newGame) => {
     return axios({
-        url: `${apiUrl}/games`,
+        url: `${apiUrl}/games/${platform._id}`,
         method: 'POST',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
         data: { game: newGame }
     })
 }
 
 // UPDATE -> Adjust a game
-export const updateGame = (user, updatedGame) => {
+export const updateGame = (user, platform, updatedGame) => {
     return axios({
-        url: `${apiUrl}/games/${updatedGame._id}`,
+        url: `${apiUrl}/games/${platform._id}/${updatedGame._id}`,
         method: 'PATCH',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        },
         data: { game: updatedGame }
     })
 }
 
 // DELETE -> Delete game
-export const removeGame = (user, id) => {
+export const removeGame = (user, platformId, gameId) => {
     return axios({
-        url: `${apiUrl}/games/${id}`,
+        url: `${apiUrl}/games/${platformId}/${gameId}`,
         method: 'DELETE',
-        headers: {
-            Authorization: `Token token=${user.token}`
-        }
     })
 }

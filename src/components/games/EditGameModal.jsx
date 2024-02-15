@@ -1,23 +1,21 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Modal } from 'react-bootstrap'
 import GameForm from '../shared/GameForm'
 import messages from '../shared/AutoDismissAlert/messages'
+import { updateGame } from '../../api/game'
 
 const EditGameModal = (props) => {
-    const { user, show, handleClose, updateGame, msgAlert, triggerRefresh } = props
+    const { user, show, handleClose, msgAlert, triggerRefresh, platform} = props
     const [game, setGame] = useState(props.game)
 
     const onChange = (e) => {
         e.persist()
-
         setGame(prevGame => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
-
             if (e.target.type === 'number') {
                 updatedValue = parseInt(e.target.value)
             }
-
             const updatedGame = { [updatedName] : updatedValue }
             return {
                 ...prevGame, ...updatedGame
@@ -27,7 +25,7 @@ const EditGameModal = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        updateGame(user, game)
+        updateGame(user, platform, game)
             .then(() => handleClose())
             .then(() => {
                 msgAlert({

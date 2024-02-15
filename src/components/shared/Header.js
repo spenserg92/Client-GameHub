@@ -13,11 +13,7 @@ const authenticatedOptions = (
 				Add Platform
 			</Link>
 		</Nav.Item>
-		<Nav.Item className='m-2'>
-			<Link to='create-game' style={linkStyle}>
-				Add Game
-			</Link>
-		</Nav.Item>
+
 		<Nav.Item className='m-2'>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
@@ -47,11 +43,6 @@ const alwaysOptions = (
 		<Nav.Item className='m-2'>
 			<Link to='/' style={linkStyle}>
 				Platforms
-			</Link>
-		</Nav.Item>
-		<Nav.Item className='m-2'>
-			<Link to='/games' style={linkStyle}>
-				Games
 			</Link>
 		</Nav.Item>
 	</>
