@@ -13,7 +13,6 @@ const CreatePlatform = (props) => {
         releaseYear: '',
         manufacturer: '',
         price: '',
-
     })
 
     const onChange = (e) => {
@@ -26,13 +25,6 @@ const CreatePlatform = (props) => {
             if (e.target.type === 'number') {
                 updatedValue = parseInt(e.target.value)
             }
-
-            // if (updatedName === 'adoptable' && e.target.checked) {
-            //     updatedValue = true
-            // } else if (updatedName === 'adoptable' && !e.target.checked) {
-            //     updatedValue = false
-            // }
-
             const updatedPlatform = { [updatedName] : updatedValue }
 
             return {

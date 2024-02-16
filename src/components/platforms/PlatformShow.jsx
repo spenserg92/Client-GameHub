@@ -8,11 +8,14 @@ import messages from '../shared/AutoDismissAlert/messages'
 import EditPlatformModal from './EditPlatformModal'
 import GameShow from '../games/GameShow'
 import NewGameModal from '../games/NewGameModal'
+import Image from 'react-bootstrap/Image'
 
 const gameCardContainerLayout = {
     display: 'flex',
     justifyContent: 'center',
-    flexFlow: 'row wrap'
+    flexFlow: 'row wrap',
+    opacity: 0.6,
+    color: 'white',
 }
 
 const PlatformShow = (props) => {
@@ -87,13 +90,18 @@ const PlatformShow = (props) => {
     return (
         <>
             <Container>
-                <Card key={platform.id} className='m-2'>
+                <Card 
+                    key={platform.id}
+                    className='m-2'
+                    border="white" 
+                    bg='dark' 
+                    style={{color: 'white', opacity: 0.6}} >
                     
                     <Card.Header>
                         {platform.name}
                     </Card.Header>
                     <Card.Body>
-                    
+                    <Image src='/background.jpg' style={{width: "30%"}} />
                         <Card.Text>
                             <small>Release Year: {platform.releaseYear}</small><br />
                             <small>Manufacturer: {platform.manufacturer}</small><br />
@@ -103,9 +111,10 @@ const PlatformShow = (props) => {
                     </Card.Body>
                     <Card.Footer>
                         <Button
-                            className='m-2'
-                            variant='info'
+                            className='m-2 btn btn-outline-light'
+                            variant='dark'
                             onClick={() => setGameModalShow(true)}
+                            
                         >
                             Give {platform.name} a game!
                         </Button>
@@ -114,15 +123,15 @@ const PlatformShow = (props) => {
                             ?
                             <>
                                 <Button
-                                    className='m-2'
-                                    variant='warning'
+                                    className='m-2 btn btn-outline-primary'
+                                    variant='dark'
                                     onClick={() => setEditModalShow(true)}
                                 >
                                     Edit Platform
                                 </Button>
                                 <Button
-                                    className='m-2'
-                                    variant='danger'
+                                    className='m-2 btn btn-outline-danger'
+                                    variant='dark'
                                     onClick={() => deletePlatform()}
                                 >
                                     Delete Platform
@@ -138,7 +147,10 @@ const PlatformShow = (props) => {
                     </Card.Footer>
                 </Card>
             </Container>
-            <Container className='m-2' style={gameCardContainerLayout}>
+            <Container 
+                style={gameCardContainerLayout}
+                bg='dark'
+            >
                 {gameCards}
             </Container>
             <EditPlatformModal 

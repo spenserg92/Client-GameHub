@@ -11,6 +11,8 @@ const cardContainerLayout = {
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'center',
+    opacity: 0.6,
+
 }
 
 const PlatformsIndex = (props) => {
@@ -47,13 +49,15 @@ const PlatformsIndex = (props) => {
 
 
     const platformCards = platforms.map(platform => (
-        <Card key={platform.id} style={{width: "30%", margin: 5}} >
+        <Card key={platform.id} style={{width: "30%", margin: 5, color: "white"  }}
+        border="white" bg='dark' 
+        >
             <Card.Header>
                 {platform.name}
             </Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/platforms/${platform._id}`} className='btn btn-info'>
+                    <Link to={`/platforms/${platform._id}`} className='btn  btn-outline-primary' >
                         View {platform.name}
                     </Link>
                 </Card.Text>

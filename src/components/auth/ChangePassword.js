@@ -6,16 +6,10 @@ import messages from '../shared/AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { FormGroup } from 'react-bootstrap'
 
 const ChangePassword = (props) => {
-	// constructor(props) {
-	// 	super(props)
 
-	// 	this.state = {
-	// 		oldPassword: '',
-	// 		newPassword: '',
-	// 	}
-	// }
     const [oldPassword, setOldPassword] = useState('')
     const [newPassword, setNewPassword] = useState('')
 
@@ -54,7 +48,9 @@ const ChangePassword = (props) => {
 
     return (
         <div className='row'>
-            <div className='col-sm-10 col-md-8 mx-auto mt-5'>
+            <div className='col-sm-10 col-md-8 mx-auto mt-5'
+                style={{color: 'white'}}
+            >
                 <h3>Change Password</h3>
                 <Form onSubmit={onChangePassword}>
                     <Form.Group controlId='oldPassword'>
@@ -79,9 +75,29 @@ const ChangePassword = (props) => {
                             onChange={e => setNewPassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button variant='primary' type='submit'>
+                    <Button variant='dark' 
+                            type='submit'
+                            className='m-2 btn btn-outline-light'
+                            style={{opacity: 0.6}}
+                        >
                         Submit
                     </Button>
+                    <FormGroup>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                    </FormGroup>
                 </Form>
             </div>
         </div>

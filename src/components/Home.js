@@ -6,7 +6,15 @@ const Home = (props) => {
 
 	return (
 		<>
-			<h2>PlatForms</h2>
+			<h2 
+			style={{
+				color: 'white',
+				display: "flex",
+				justifyContent: 'center',
+				margin: "2rem"
+		}} 
+			
+			>Platforms</h2>
 			<PlatformsIndex msgAlert={msgAlert} />
 		</>
 	)
