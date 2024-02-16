@@ -49,7 +49,11 @@ const PlatformForm = (props) => {
                         onChange={handleChange}
                     />
                 </Form.Group>
-                <Button className="m-2" type="submit">Submit</Button>
+                <Button className="m-2 btn btn-outline-primary" 
+                        type="submit"
+                        style={{color: 'white', opacity: 0.7}}
+                        variant='dark'
+                        >Submit</Button>
             </Form>
             <br />
             <br />

@@ -101,7 +101,7 @@ const PlatformShow = (props) => {
                         {platform.name}
                     </Card.Header>
                     <Card.Body>
-                    <Image src='/background.jpg' style={{width: "30%"}} />
+                    <Image src='/background.jpg' style={{width: "25%"}} />
                         <Card.Text>
                             <small>Release Year: {platform.releaseYear}</small><br />
                             <small>Manufacturer: {platform.manufacturer}</small><br />
