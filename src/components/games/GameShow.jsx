@@ -28,7 +28,11 @@ const GameShow = (props) => {
 
     return (
         <>
-            <Card>
+            <Card 
+                border="white" 
+                bg='dark'
+                style={{color: 'white'}}
+            >
                 <Card.Header>
                     {game.name}
                 </Card.Header>
@@ -42,15 +46,15 @@ const GameShow = (props) => {
                 <Card.Footer>
                     <>
                         <Button
-                            className='m-2'
-                            variant='warning'
+                            className='m-2 btn btn-outline-primary'
+                            variant='dark'
                             onClick={() => setEditModalShow(true)}
                         >
                             Edit Game
                         </Button>
                         <Button
-                            className='m-2'
-                            variant='danger'
+                            className='m-2 btn btn-outline-danger'
+                            variant='dark'
                             onClick={() => deleteGame()}
                         >
                             Remove Game

@@ -4,7 +4,7 @@ const PlatformForm = (props) => {
     const { platform, handleChange, handleSubmit, heading } = props
 
     return (
-        <Container className="justify-content-center">
+        <Container className="justify-content-center" style={{color: 'white'}} >
             <h3>{heading}</h3>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className='m-2'>
@@ -49,8 +49,21 @@ const PlatformForm = (props) => {
                         onChange={handleChange}
                     />
                 </Form.Group>
-                <Button className="m-2" type="submit">Submit</Button>
+                <Button className="m-2 btn btn-outline-primary" 
+                        type="submit"
+                        style={{color: 'white', opacity: 0.7}}
+                        variant='dark'
+                        >Submit</Button>
             </Form>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
         </Container>
     )
 }
